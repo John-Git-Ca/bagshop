@@ -4,10 +4,12 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 
 import {
   productListReducer,
+  queryReducer,
 } from './reducers/productReducers'
 
 const reducer = combineReducers({
   productListReducer,
+  queryReducer,
 })
 
 const initialState = {

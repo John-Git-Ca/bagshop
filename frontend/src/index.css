@@ -1,25 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Courgette&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@400;700&display=swap');
 
 :root{
-  --main-color: #FBF7F0;
+  /* --main-color: #FBF7F0; */
 }
 
 *{
-  font-family: 'Courgette', cursive;
-  background-color: var(--main-color);
+  font-family: 'Dongle', sans-serif;  background-color: var(--main-color);
   padding: 0;
   margin: 0;
+  font-size: 20px;
 }
 
 .nav_brand {
   text-shadow: 1px 3px 0 #969696, 1px 13px 5px #aba8a8;
 }
 
-.nav_btn:hover {
+.responsive_btn:hover {
   cursor: pointer;
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
-.nav_btn:active{
+.responsive_btn:active{
   transform: translateY(4px);
 }

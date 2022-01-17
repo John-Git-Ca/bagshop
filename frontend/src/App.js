@@ -6,6 +6,8 @@ import Header from './components/Header'
 import SigninScreen from './screens/SigninScreen'
 import SignupScreen from './screens/SignupScreen'
 import CartScreen from './screens/CartScreen'
+import Footer from './components/Footer'
+import ProductScreen from './screens/ProductScreen'
 
 const App = () => {
   return (
@@ -17,8 +19,11 @@ const App = () => {
         <Route path='/signin' element={<SigninScreen />} />
         <Route path='/signup' element={<SignupScreen />} />
         <Route path='/cart' element={<CartScreen />} />
+        <Route path='search/:keyword/page/:pageNumber' element={<HomeScreen />} exact/>
+        <Route path='/product/:id' element={<ProductScreen />} />
         
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }
