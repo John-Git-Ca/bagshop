@@ -26,8 +26,8 @@ const Filter = ({products}) => {
   return (
     <ListGroup className='p-3 m-3 mt-0 pt-0'>
       <div className='fs-6 responsive_btn border-bottom d-flex justify-content-between' onClick={handleCategory}>
-        <Col xs={10} sm={2}>Category</Col>
-        <Col xs={10} sm={2} className='align-self-end'>{category ? <AiOutlineArrowUp/> : <AiOutlineArrowDown/>}</Col>
+        <Col md={10}>Category</Col>
+        <Col md={2} className='align-self-end'>{category ? <AiOutlineArrowUp/> : <AiOutlineArrowDown/>}</Col>
       </div>
       {
         category && products.map(product => (
@@ -39,8 +39,8 @@ const Filter = ({products}) => {
         ))
       }
       <div className='fs-6 responsive_btn border-bottom d-flex justify-content-between' onClick={handlePrice}>
-        <Col xs={10} sm={2}>Price</Col>
-        <Col xs={10} sm={2} className='align-self-end'>{price ? <AiOutlineArrowUp/> : <AiOutlineArrowDown/>}</Col>
+        <Col md={10}>Price</Col>
+        <Col md={2} className='align-self-end'>{price ? <AiOutlineArrowUp/> : <AiOutlineArrowDown/>}</Col>
       </div>
       <Row className='my-1 mx-0' >
         {
@@ -48,7 +48,7 @@ const Filter = ({products}) => {
           <div className='p-0 m-0'>
             <Row className='p-0 m-0 my-1'>
               <Form.Check className='w-25 text-end align-middle fs-4'></Form.Check>
-              <ListGroup.Item className='w-75 ml-0 rounded fs-6  p-1'>$0 - $300</ListGroup.Item>
+              <ListGroup.Item className='w-75 ml-0 rounded fs-6  p-1' >$0 - $300</ListGroup.Item>
             </Row>
             <Row className='p-0 m-0 my-1'>
               <Form.Check className='w-25 text-end align-middle fs-4'></Form.Check>

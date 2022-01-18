@@ -9,6 +9,7 @@ import Paginate from '../components/Paginate'
 import {FiDelete} from 'react-icons/fi'
 import { RESET_KEYWORD } from '../constants/productConstants'
 import Loader from '../components/Loader'
+import Message from '../components/Message'
 
 const HomeScreen = () => {
 
@@ -33,7 +34,7 @@ const HomeScreen = () => {
   
   return (
     <Row className='m-3 mt-5 border-top'>
-      <Col sm={3} xs={3} className='d-inline'>
+      <Col md={3} className='d-inline'>
         <Filter products={products}/>
       </Col>
       <Col sm={9} xs={9}>
@@ -43,7 +44,11 @@ const HomeScreen = () => {
             <FiDelete className='ml-3 pl-3'/>
           </Button>}
         <Row className='justify-content-center'>
-          {loading ? <Loader /> : products.length === 0 ? <Col>No Products Found</Col>:products.map((product)=>(
+          {loading 
+          ? <Loader /> 
+          : error 
+          ? <Message>{error}</Message> 
+          : products.length === 0 ? <Col>No Products Found</Col>:products.map((product)=>(
             <Col key={product._id} 
               sm={12} md={6} lg={4} xl={3} 
               style={{

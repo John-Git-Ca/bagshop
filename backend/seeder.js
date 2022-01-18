@@ -24,11 +24,11 @@ const importFromFile = () => {
       description: sheet['D'+ i].v,
       category: sheet['E'+ i].v,
       brand: 'default brand',
-      countInStock: 10,
+      countInStock: i % 2 === 0 ? 0 : 10,
       rating: 0,
       numReviews: 0,
     }
-    console.log(product)
+    if(i < 10) console.log(product)
     products.push(product)
   }
 }

@@ -16,7 +16,6 @@ const Paginate = ({pages, page}) => {
     dispatch({type: 'UPDATE_PAGENUMBER', payload: value})
   }
   useEffect(() => {
-    console.log('pagenumber ' +pageNumber)
     dispatch(listProducts(keyword, pageNumber))
     window.scrollTo({top: 0, behavior: 'smooth'});
   }, [pageNumber])

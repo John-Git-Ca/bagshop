@@ -5,6 +5,9 @@ import {
   UPDATE_KEYWORD,
   UPDATE_PAGENUMBER,
   RESET_KEYWORD,
+  PRODUCT_DETAILS_REQUEST,
+  PRODUCT_DETAILS_SUCCESS,
+  PRODUCT_DETAILS_FAIL,
 } from '../constants/productConstants'
 
 export const productListReducer = (state = {products:[]}, action) => {
@@ -44,6 +47,19 @@ export const queryReducer = (state={keyword:'', pageNumber:''},action) => {
         pageNumber:'',
         keyword: '',
       }
+    default:
+      return state
+  }
+}
+
+export const productDetailsReducer = (state={}, action) => {
+  switch (action.type){
+    case PRODUCT_DETAILS_REQUEST:
+      return {...state, loading: true}
+    case PRODUCT_DETAILS_SUCCESS:
+      return {loading: false, product: action.payload}
+    case PRODUCT_DETAILS_FAIL:
+      return {loading: false, error: action.payload}
     default:
       return state
   }

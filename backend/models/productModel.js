@@ -31,10 +31,10 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    countInstock: {
+    countInStock: {
       type: Number,
       required: true,
-      default: 0,
+      default: 0
     }
   },
   {
