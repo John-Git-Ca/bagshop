@@ -2,7 +2,6 @@ import asyncHandler from 'express-async-handler'
 import Product from '../models/productModel.js'
 
 const getProducts = asyncHandler(async (req, res) => {
-  console.log(req.query)
   const pageSize = 24
   const page = Number(req.query.pageNumber) || 1
 
@@ -22,16 +21,16 @@ const getProducts = asyncHandler(async (req, res) => {
   res.json({products, page, pages: Math.ceil(count / pageSize)})
 })
 
-const getProductById = async (req, res) => {
+const getProductById = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id)
   if(product){
     res.json(product)
   }
   else{
-    res.status(404)
+    res.status(404).json({message:'Invaid email or password'})
     throw new Error('Product not found')
   }
-}
+})
 
 export {
   getProducts,

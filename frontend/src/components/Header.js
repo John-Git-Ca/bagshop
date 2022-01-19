@@ -6,13 +6,16 @@ import { BsSearch } from 'react-icons/bs'
 import { useSelector,  useDispatch } from 'react-redux'
 import { listProducts } from '../actions/productAction'
 import { UPDATE_KEYWORD } from '../constants/productConstants'
-
+import {logout } from '../actions/userActions'
 
 const Header = () => {
   const dispatch = useDispatch()
   const [key, setKey] = useState('')
 
   const queryReducer = useSelector(state => state.queryReducer)
+  const userLoginReducer = useSelector(state => state.userLoginReducer)
+
+  const {userInfo} = userLoginReducer
 
   const {keyword} = queryReducer
 
@@ -26,11 +29,14 @@ const Header = () => {
       handleSearch()
     }
   }
+
+  const logoutHandler = () => {
+    dispatch(logout())
+  }
   
   useEffect(()=>{
     dispatch(listProducts(keyword, ''))
   }, [keyword])
-
 
   return (
     <Navbar className='border-bottom m-0' style={{backgroundColor:'#FBF7F0'}}>
@@ -50,10 +56,13 @@ const Header = () => {
           />
         <BsSearch className='responsive_btn' size={20} onClick={handleSearch}/>
       </Col>
-      <Col sm={1} xs={1} className='text-center responsive_btn'>
-        <LinkContainer to='/signin'>
-          <div>Sign In</div>
-        </LinkContainer>
+      <Col sm={1} xs={1} className='text-center responsive_btn'>{
+        userInfo 
+        ? <div onClick={logoutHandler}>Sign Out</div>
+        : <LinkContainer to='/signin'>
+            <div>Sign In</div>
+          </LinkContainer>
+      }
       </Col>
       <Col  sm={1} xs={1} className='text-center responsive_btn'>
         <LinkContainer to='signup'>

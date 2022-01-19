@@ -1,8 +1,10 @@
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import Product from './models/productModel.js'
+import User from './models/userModel.js'
 import xlsx from 'xlsx'
 import connectDB from './config/db.js'
+import users from './data/users.js'
 
 dotenv.config()
 
@@ -36,9 +38,11 @@ const importFromFile = () => {
 const importProduct = async () => {
   try {
     await Product.deleteMany()
+    await User.deleteMany()
     importFromFile()
 
     await Product.insertMany(products)
+    await User.insertMany(users)
 
     console.log('data imported...')
 

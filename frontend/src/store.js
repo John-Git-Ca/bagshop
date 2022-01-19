@@ -8,10 +8,15 @@ import {
   productDetailsReducer,
 } from './reducers/productReducers'
 
+import {
+  userLoginReducer,
+} from './reducers/useReducers'
+
 const reducer = combineReducers({
   productListReducer,
   queryReducer,
   productDetailsReducer,
+  userLoginReducer,
 })
 
 const initialState = {
