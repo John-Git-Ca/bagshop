@@ -45,7 +45,7 @@ const Header = () => {
           <Navbar.Brand className='fs-1'>USHOP</Navbar.Brand>
         </LinkContainer>
       </Col>
-      <Col sm={6} xs={6}>
+      <Col sm={5} xs={5}>
         <Form.Control 
             style={{width:'30%'}} 
             className='d-inline m-1'
@@ -56,9 +56,11 @@ const Header = () => {
           />
         <BsSearch className='responsive_btn' size={20} onClick={handleSearch}/>
       </Col>
-      <Col sm={1} xs={1} className='text-center responsive_btn'>{
+      <Col sm={2} xs={2} className='text-center responsive_btn'>{
         userInfo 
-        ? <div onClick={logoutHandler}>Sign Out</div>
+        ? <div onClick={logoutHandler}>Sign Out [
+          <span className='text-info'>{userInfo.name}</span>
+          ]</div>
         : <LinkContainer to='/signin'>
             <div>Sign In</div>
           </LinkContainer>

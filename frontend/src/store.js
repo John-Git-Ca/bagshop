@@ -10,6 +10,7 @@ import {
 
 import {
   userLoginReducer,
+  userRegisterReducer,
 } from './reducers/useReducers'
 
 const reducer = combineReducers({
@@ -17,6 +18,7 @@ const reducer = combineReducers({
   queryReducer,
   productDetailsReducer,
   userLoginReducer,
+  userRegisterReducer,
 })
 
 const initialState = {

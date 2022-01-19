@@ -4,8 +4,11 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import {Button, Form } from 'react-bootstrap'
 import { login } from '../actions/userActions'
+import { useNavigate } from 'react-router'
 
 const SigninScreen = () => {
+
+  const navigate = useNavigate()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -23,9 +26,12 @@ const SigninScreen = () => {
   }
 
   useEffect(() => {
-  }, [])
+    if(userInfo){
+      navigate('/')
+    }
+  }, [userInfo])
   return (
-    <div className='text-center'>
+    <div>
       <h3>Sign In</h3>
       {error && <Message variant='danger'>{error}</Message>}
       {loading && <Loader />}
@@ -36,7 +42,7 @@ const SigninScreen = () => {
           </Form.Label>
           <Form.Control 
             type='email'
-            placeholder='Email...'
+            placeholder='Enter Email...'
             value={email}
             onChange={(e)=>setEmail(e.target.value)}
           />
@@ -47,7 +53,7 @@ const SigninScreen = () => {
           </Form.Label>
           <Form.Control 
             type='password'
-            placeholder='password...'
+            placeholder='Enter Password...'
             value={password}
             onChange={(e)=>setPassword(e.target.value)}
           />
