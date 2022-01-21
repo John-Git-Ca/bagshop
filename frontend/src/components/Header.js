@@ -14,6 +14,8 @@ const Header = () => {
 
   const queryReducer = useSelector(state => state.queryReducer)
   const userLoginReducer = useSelector(state => state.userLoginReducer)
+  const cartReducer = useSelector(state => state.cartReducer)
+  const {cartItems} = cartReducer
 
   const {userInfo} = userLoginReducer
 
@@ -75,6 +77,7 @@ const Header = () => {
         <LinkContainer to='/cart'>
           <div>
             <HiOutlineShoppingBag size={30}/>
+              <span className='text-danger fs-5 '>{cartItems.reduce((acc, item) => acc + item.quantity, 0)}</span>
           </div>
         </LinkContainer>
       </Col>

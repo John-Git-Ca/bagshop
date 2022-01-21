@@ -9,6 +9,7 @@ import CartScreen from './screens/CartScreen'
 import Footer from './components/Footer'
 import ProductScreen from './screens/ProductScreen'
 import ProductEditScreen from './screens/ProductEditScreen'
+import ShippingScreen from './screens/ShippingScreen'
 
 const App = () => {
   return (
@@ -19,10 +20,12 @@ const App = () => {
         <Route path='productlist' element={<ProductListScreen /> }/>
         <Route path='/signin' element={<SigninScreen />} />
         <Route path='/signup' element={<SignupScreen />} />
+        <Route path='/cart/:id/:quantity' element={<CartScreen />} />
         <Route path='/cart' element={<CartScreen />} />
         <Route path='search/:keyword/page/:pageNumber' element={<HomeScreen />} exact/>
         <Route path='/product/:id' element={<ProductScreen />} />
         <Route path='/product/edit/:id' element={<ProductEditScreen />} />
+        <Route path='shipping' element={<ShippingScreen />} />
         
       </Routes>
       <Footer />

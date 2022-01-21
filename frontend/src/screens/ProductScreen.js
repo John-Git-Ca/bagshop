@@ -14,14 +14,14 @@ const ProductScreen = () => {
   const {id} = useParams();
   const dispatch = useDispatch()
 
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState(1)
 
   const productDetailsReducer = useSelector(state => state.productDetailsReducer)
 
   const {loading, error, product} = productDetailsReducer
 
   const addToCartHandler = () => {
-
+    navigate(`/cart/${id}/${quantity}`)
   }
   
   useEffect(()=>{
@@ -76,7 +76,8 @@ const ProductScreen = () => {
                     <ListGroupItem>
                       <Row className='text-center'>
                         <Col><QuantityPicker 
-                        min={0} 
+                        min={0}
+                        value={quantity}
                         max={product.countInStock + 1}
                         onChange={(value)=>setQuantity(value)}
                         /></Col>
@@ -86,7 +87,7 @@ const ProductScreen = () => {
                       <Button 
                         style={{width:'100%'}}
                         onClick={addToCartHandler}
-                        disabled={quantity > product.countInStock}
+                        disabled={quantity > product.countInStock || quantity === 0}
                       >
                         {quantity > product.countInStock ? 'No More Products' : 'Add to Cart'}
                       </Button>
