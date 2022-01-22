@@ -6,19 +6,21 @@ import { addToCart, removeFromCart } from '../actions/cartActions'
 import Message from '../components/Message'
 import { Link } from 'react-router-dom'
 import { QuantityPicker } from 'react-qty-picker'
+import { useNavigate } from 'react-router'
 
 const CartScreen = () => {
   const {id, quantity} = useParams()
   const dispatch = useDispatch()
   const cartReducer = useSelector(state => state.cartReducer)
   const {cartItems} = cartReducer
+  const navigate = useNavigate()
 
   const removeHanlder = (id) => {
     dispatch(removeFromCart(id))
   }
 
   const checkoutHandler = () => {
-
+    navigate('/shipping')
   }
   
   useEffect(()=> {

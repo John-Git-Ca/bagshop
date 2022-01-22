@@ -1,10 +1,78 @@
-import React from 'react';
+import React, { useState } from 'react'
+import { Form, Button } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
+import { saveShippingAddress } from '../actions/cartActions';
+import CheckoutSteps from '../components/CheckoutSteps';
+import FormContainer from '../components/FormContainer';
 
 const ShippingScreen = () => {
+
+  const dispatch = useDispatch()
+
+
+  const [address, setAddress] = useState('')
+  const [city, setCity] = useState('')
+  const [country, setCountry] = useState('')
+  const [postcode, setPostcode] = useState('')
+  const navigate = useNavigate()
+
+  console.log({
+    address,
+    city,
+    country,
+    postcode
+  })
+  const submitHandler = (e) => {
+    e.preventDefault()
+    dispatch(saveShippingAddress({address, city, country, postcode}))
+    navigate('/payment')
+  }
+
   return (
-    <div>
-      shipping screen
-    </div>
+    <FormContainer>
+      <CheckoutSteps step1 step2/>
+      <h3>Shipping</h3>
+      <Form onSubmit={submitHandler}>
+        <Form.Group controlId='address'>
+          <Form.Label>Address</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Enter address...'
+            value={address}
+            onChange={(e)=> setAddress(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group controlId='city'>
+          <Form.Label>City</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Enter city...'
+            value={city}
+            onChange={(e)=> setCity(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group  controlId='country'>
+          <Form.Label>Country</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Enter country...'
+            value={country}
+            onChange={(e)=> setCountry(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group  controlId='postcode'>
+          <Form.Label>Postcode</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Enter postcode...'
+            value={postcode}
+            onChange={(e)=> setPostcode(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+        <Button type='submit' variant='primary' className='m-2'>Continue</Button>
+      </Form>
+    </FormContainer>
   )
 }
 
