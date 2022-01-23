@@ -36,7 +36,7 @@ const PaymentScreen = () => {
             id='Paypal'
             name='paymentMethod'
             value='PayPal'
-            checked
+            // checked
             onChange={(e)=> setPaymentMethod(e.target.value)}
           />
         </Form.Group>

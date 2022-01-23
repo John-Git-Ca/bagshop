@@ -42,12 +42,12 @@ const Header = () => {
 
   return (
     <Navbar className='border-bottom m-0' style={{backgroundColor:'#FBF7F0'}}>
-      <Col sm={3} xs={3} className='text-center nav_brand' to='/'>
+      <Col sm={4} xs={4} className='text-center nav_brand' to='/'>
         <LinkContainer to='/'>
           <Navbar.Brand className='fs-1'>USHOP</Navbar.Brand>
         </LinkContainer>
       </Col>
-      <Col sm={5} xs={5}>
+      <Col sm={6} xs={6}>
         <Form.Control 
             style={{width:'30%'}} 
             className='d-inline m-1'
@@ -58,7 +58,7 @@ const Header = () => {
           />
         <BsSearch className='responsive_btn' size={20} onClick={handleSearch}/>
       </Col>
-      <Col sm={2} xs={2} className='text-center responsive_btn'>{
+      {/* <Col sm={2} xs={2} className='text-center responsive_btn'>{
         userInfo 
         ? <div onClick={logoutHandler}>Sign Out [
           <span className='text-info'>{userInfo.name}</span>
@@ -67,12 +67,12 @@ const Header = () => {
             <div>Sign In</div>
           </LinkContainer>
       }
-      </Col>
-      <Col  sm={1} xs={1} className='text-center responsive_btn'>
+      </Col> */}
+      {/* <Col  sm={1} xs={1} className='text-center responsive_btn'>
         <LinkContainer to='signup'>
           <div>Sign Up</div>
         </LinkContainer>
-      </Col>
+      </Col> */}
       <Col  sm={1} xs={1} className='text-center responsive_btn'>
         <LinkContainer to='/cart'>
           <div>

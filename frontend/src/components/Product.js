@@ -14,7 +14,7 @@ const Product = ({product}) => {
         </Link>
 
         <Card.Text className='fs-4 text-center'  style={{height: '50%', backgroundColor:'white'}}>
-          ${product.price}
+          HK${product.price}
         </Card.Text>
       </Card.Body>
     </Card>

@@ -10,7 +10,7 @@ const ShippingScreen = () => {
 
   const dispatch = useDispatch()
 
-
+  const [email, setEmail] = useState('')
   const [address, setAddress] = useState('')
   const [city, setCity] = useState('')
   const [country, setCountry] = useState('')
@@ -25,15 +25,25 @@ const ShippingScreen = () => {
   })
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(saveShippingAddress({address, city, country, postcode}))
+    dispatch(saveShippingAddress({email, address, city, country, postcode}))
     navigate('/payment')
   }
 
   return (
     <FormContainer>
-      <CheckoutSteps step1 step2/>
-      <h3>Shipping</h3>
+      <CheckoutSteps step2/>
+      <h3>Shipping Information</h3>
       <Form onSubmit={submitHandler}>
+        <Form.Group>
+          <Form.Label>Contact Information</Form.Label>
+          <Form.Control
+            type='email'
+            placeholder='Enter Email...'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          ></Form.Control>
+          <Form.Text>We'll send order updates to this email.</Form.Text>
+        </Form.Group>
         <Form.Group controlId='address'>
           <Form.Label>Address</Form.Label>
           <Form.Control

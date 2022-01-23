@@ -49,7 +49,7 @@ const CartScreen = () => {
                     <Col md={3}>
                       <Link to={`/product/${item.product}`}>{item.name}</Link>
                     </Col>
-                    <Col md={1} className='fs-4'>${item.price}</Col>
+                    <Col md={1} className='fs-4'>HK${item.price}</Col>
                     <Col md={3}>
                       <QuantityPicker
                         value={item.quantity || quantity}
@@ -82,7 +82,7 @@ const CartScreen = () => {
                   Subtotal ({cartItems.reduce((acc, item) => acc + item.quantity, 0)}) items
                 </h2>
                 <h3>
-                  $
+                  HK$ 
                  {cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0).toFixed(2)}
                 </h3>
               </ListGroupItem>
